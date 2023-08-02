@@ -3,6 +3,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 interface AuthState {
   isAuthenticated: boolean;
   user?: Record<string, any>;
+  tokenExpirationDate?: string;
   token?: string | null;
   refreshToken?: string | null;
   idToken?: string | null;
@@ -25,6 +26,12 @@ const authSlice = createSlice({
     setToken: (state, {payload}: PayloadAction<AuthState['token']>) => {
       state.token = payload;
     },
+    setTokenExpirationDate: (
+      state,
+      {payload}: PayloadAction<AuthState['tokenExpirationDate']>,
+    ) => {
+      state.tokenExpirationDate = payload;
+    },
     setRefreshToken: (
       state,
       {payload}: PayloadAction<AuthState['refreshToken']>,
@@ -42,6 +49,7 @@ export const {
   setLogin,
   setUser,
   setToken,
+  setTokenExpirationDate,
   setRefreshToken,
   setIdToken,
   setLogout,
