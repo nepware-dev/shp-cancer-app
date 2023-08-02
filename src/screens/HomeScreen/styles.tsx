@@ -42,7 +42,4 @@ export default StyleSheet.create({
     height: 310,
     resizeMode: 'contain',
   },
-  logoutButton: {
-    marginVertical: 12,
-  },
 });
