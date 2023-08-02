@@ -5,6 +5,8 @@
     "paths": {
       "*": ["src/*"],
       "tests": ["tests/*"],
+      "@rna/*": ["src/vendor/react-native-arsenal/lib/*"]
     }
-  }
+  },
+  "include": ["src", "declaration.d.ts"]
 }
