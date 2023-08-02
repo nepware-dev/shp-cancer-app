@@ -67,3 +67,5 @@ yarn-error.log
 
 # React Native Arsenal
 src/vendor/react-native-arsenal
+
+.env

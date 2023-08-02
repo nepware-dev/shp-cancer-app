@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Text, View, Image} from 'react-native';
+import {useDispatch} from 'react-redux';
 
-import Button from '../../components/Button';
+import Button from 'components/Button';
+
+import {setLogout} from 'store/slices/auth';
 
 import styles from './styles';
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = useCallback(() => {
+    dispatch(setLogout());
+  }, [dispatch]);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -23,6 +32,11 @@ const Home = () => {
         />
       </View>
       <Button title="Question Set" />
+      <Button
+        style={styles.logoutButton}
+        onPress={handleLogout}
+        title="Logout"
+      />
     </View>
   );
 };
