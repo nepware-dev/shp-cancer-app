@@ -16,3 +16,11 @@ export const BackButton = () => {
     </Pressable>
   );
 };
+
+export const SaveButton = ({onPress}: {onPress: () => void}) => {
+  return (
+    <Pressable onPress={onPress} style={styles.saveButton}>
+      <Icon color={COLORS.primary} name="checkmark-circle-sharp" size={28} />
+    </Pressable>
+  );
+};

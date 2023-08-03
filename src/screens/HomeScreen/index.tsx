@@ -1,26 +1,26 @@
 import React, {useCallback} from 'react';
 import {Text, View, Image} from 'react-native';
 import {useDispatch} from 'react-redux';
+import {useNavigation} from '@react-navigation/native';
 
 import Button from 'components/Button';
 
 import {setLogout} from 'store/slices/auth';
 
-// import useFHIRResource from 'hooks/useFHIRResource';
-
 import styles from './styles';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const navigation = useNavigation<any>();
 
-  // const [{loading, result: questionnaire}] = useFHIRResource('Questionnaire');
-  // if (!loading && questionnaire) {
-  //   console.log(questionnaire.entry?.[0]?.resource);
-  // }
+  const dispatch = useDispatch();
 
   const handleLogout = useCallback(() => {
     dispatch(setLogout());
   }, [dispatch]);
+
+  const handleQuestionPress = useCallback(() => {
+    navigation.navigate('QuestionSets');
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
@@ -35,7 +35,7 @@ const Home = () => {
           source={require('assets/images/doctor.png')}
         />
       </View>
-      <Button title="View Question Sets" />
+      <Button title="View Question Sets" onPress={handleQuestionPress} />
       <Button onPress={handleLogout} title="Logout" />
     </View>
   );

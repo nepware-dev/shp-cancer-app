@@ -1,0 +1,745 @@
+{
+	"resourceType": "Questionnaire",
+	"id": "0be14cfff2f640498b23f3a4870d60ee",
+	"meta": {
+		"versionId": "10",
+		"lastUpdated": "2022-02-07T08:34:07.0735715+00:00"
+	},
+	"text": {
+		"status": "generated",
+		"div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><b>Cervical Screening Collection Form</b><hr /><span style=\"color: gray;\">Status:</span> Active<br /><span style=\"color: gray;\">Publisher:</span> Telstra Health\r\n</div>"
+	},
+	"extension": [
+		{
+			"extension": [
+				{
+					"url": "name",
+					"valueId": "LaunchPatient"
+				},
+				{
+					"url": "type",
+					"valueCode": "Patient"
+				},
+				{
+					"url": "description",
+					"valueString": "The patient that is to be used to pre-populate the form"
+				}
+			],
+			"url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+		}
+	],
+	"url": "https://fhirtest.emerging.com.au/fhir/Questionnaire/0be14cfff2f640498b23f3a4870d60ee",
+	"name": "CervicalScreeningCollectionForm",
+	"title": "Cervical Screening Collection Form",
+	"status": "active",
+	"publisher": "Telstra Health",
+	"useContext": [
+		{
+			"code": {
+				"system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+				"code": "user",
+				"display": "User Type"
+			},
+			"valueCodeableConcept": {
+				"coding": [
+					{
+						"code": "demo",
+						"display": "02. Form"
+					}
+				]
+			}
+		}
+	],
+	"item": [
+		{
+			"extension": [
+				{
+					"url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+					"valueCodeableConcept": {
+						"coding": [
+							{
+								"system": "http://hl7.org/fhir/questionnaire-item-control",
+								"code": "tab"
+							}
+						]
+					}
+				}
+			],
+			"linkId": "root",
+			"type": "group",
+			"item": [
+				{
+					"linkId": "tab-1",
+					"text": "Patient Details",
+					"type": "group",
+					"repeats": false,
+					"item": [
+						{
+							"linkId": "hosp",
+							"text": "Hospital",
+							"type": "string"
+						},
+						{
+							"linkId": "sex",
+							"text": "Gender",
+							"type": "choice",
+							"required": true,
+							"answerOption": [
+								{
+									"valueCoding": {
+										"system": "CTL1004644",
+										"code": "F",
+										"display": "Female"
+									}
+								},
+								{
+									"valueCoding": {
+										"system": "CTL1004644",
+										"code": "M",
+										"display": "Male"
+									}
+								},
+								{
+									"valueCoding": {
+										"system": "CTL1004644",
+										"code": "O",
+										"display": "Other"
+									}
+								}
+							]
+						},
+						{
+							"linkId": "ur",
+							"text": "UR Prefix",
+							"type": "string"
+						},
+						{
+							"linkId": "urnum",
+							"text": "UR No",
+							"type": "string"
+						},
+						{
+							"linkId": "dob",
+							"text": "Date Of Birth",
+							"type": "date",
+							"required": true
+						},
+						{
+							"linkId": "lastname",
+							"text": "Patient Surname",
+							"type": "string",
+							"required": true,
+							"maxLength": 255
+						},
+						{
+							"linkId": "givenname",
+							"text": "Patient First Name",
+							"type": "string",
+							"required": true,
+							"maxLength": 255
+						},
+						{
+							"linkId": "address1",
+							"text": "Address",
+							"type": "string",
+							"required": true,
+							"maxLength": 255
+						},
+						{
+							"linkId": "suburb",
+							"text": "Suburb/Town/City",
+							"type": "string",
+							"required": true,
+							"maxLength": 255
+						},
+						{
+							"linkId": "state",
+							"text": "State",
+							"type": "string",
+							"required": true,
+							"maxLength": 255
+						},
+						{
+							"linkId": "postcode",
+							"text": "Postcode",
+							"type": "string",
+							"required": true,
+							"maxLength": 4
+						},
+						{
+							"linkId": "homephone",
+							"text": "Contact No",
+							"type": "string",
+							"maxLength": 10
+						},
+						{
+							"linkId": "medsection",
+							"text": "Medicare",
+							"type": "group",
+							"item": [
+								{
+									"linkId": "medicareeligible",
+									"text": "Medicare Eligible Patient?",
+									"type": "boolean"
+								},
+								{
+									"linkId": "medicare",
+									"text": "Medicare Number",
+									"type": "string",
+									"required": true
+								},
+								{
+									"linkId": "hf",
+									"text": "Health Fund Name",
+									"type": "string"
+								},
+								{
+									"linkId": "hfe",
+									"text": "EXP",
+									"type": "string"
+								},
+								{
+									"linkId": "va",
+									"text": "Veterans Affairs",
+									"type": "string"
+								},
+								{
+									"linkId": "irn",
+									"text": "IRN",
+									"type": "string"
+								},
+								{
+									"linkId": "aboriginaldescent",
+									"text": "Aboriginal Status",
+									"type": "choice",
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Aboriginal"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "TSI"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Both"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Non-indigenous"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Not stated"
+											}
+										}
+									]
+								}
+							]
+						},
+						{
+							"linkId": "collector",
+							"text": "Collector",
+							"type": "group",
+							"item": [
+								{
+									"linkId": "cn",
+									"text": "Surname of Collecting Person",
+									"type": "string",
+									"required": true
+								},
+								{
+									"linkId": "ini",
+									"text": "Initials",
+									"type": "string"
+								},
+								{
+									"linkId": "datecoll",
+									"text": "Date Collected",
+									"type": "date"
+								},
+								{
+									"linkId": "timecoll",
+									"text": "Time Collected",
+									"type": "time"
+								}
+							]
+						},
+						{
+							"linkId": "collection",
+							"text": "Collection Details",
+							"type": "group",
+							"item": [
+								{
+									"linkId": "sc",
+									"text": "Self Collect",
+									"type": "boolean"
+								},
+								{
+									"linkId": "pc",
+									"text": "Practitioner Collect",
+									"type": "boolean"
+								},
+								{
+									"linkId": "cc",
+									"text": "Collector Code",
+									"type": "string",
+									"required": true
+								},
+								{
+									"linkId": "cont",
+									"text": "Containers Collected",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Thin Prep"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Swab"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Histo"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Other"
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"linkId": "tab-2",
+					"text": "Mandatory Information",
+					"type": "group",
+					"repeats": false,
+					"item": [
+						{
+							"linkId": "site1",
+							"text": "Specimen Site",
+							"type": "choice",
+							"repeats": true,
+							"answerOption": [
+								{
+									"valueCoding": {
+										"code": "Cervix"
+									}
+								},
+								{
+									"valueCoding": {
+										"code": "Vaginal Vault"
+									}
+								},
+								{
+									"valueCoding": {
+										"code": "Vulva"
+									}
+								}
+							]
+						},
+						{
+							"linkId": "collby",
+							"text": "Collected By",
+							"type": "choice",
+							"repeats": true,
+							"answerOption": [
+								{
+									"valueCoding": {
+										"code": "Specialist (Gynae)"
+									}
+								},
+								{
+									"valueCoding": {
+										"code": "At Colposcopy"
+									}
+								}
+							]
+						},
+						{
+							"linkId": "tp",
+							"text": "Testing Protocol",
+							"type": "choice",
+							"repeats": true,
+							"answerOption": [
+								{
+									"valueCoding": {
+										"code": "Routine Screening"
+									}
+								},
+								{
+									"valueCoding": {
+										"code": "Diagnostic"
+									}
+								}
+							]
+						},
+						{
+							"linkId": "reason",
+							"text": "Reason for Test",
+							"type": "group",
+							"item": [
+								{
+									"linkId": "t1",
+									"text": "HPV +/- Reflex LBC",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Primary Screening"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Follow-up collection (12months) after positive HPV"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Repeat collection for previous unsatisfactory"
+											}
+										}
+									]
+								},
+								{
+									"linkId": "t1-1",
+									"text": "Follow-up collection (12months) after positive HPV (Date of orginal sample)",
+									"type": "date"
+								},
+								{
+									"linkId": "t1-2",
+									"text": "Repeat collection for previous unsatisfactory (Date of orginal sample)",
+									"type": "date"
+								},
+								{
+									"linkId": "t2",
+									"text": "Co-Test",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Test of Cure"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Investigation of abnormal signs or symptoms"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Other (e.g. AIS, DES exposure etc.)"
+											}
+										}
+									]
+								},
+								{
+									"linkId": "t2-1",
+									"text": "Investigation of abnormal signs or symptoms (Please specify)",
+									"type": "string"
+								},
+								{
+									"linkId": "t2-2",
+									"text": "Other (e.g. AIS, DES exposure etc.) (Please specify)",
+									"type": "string"
+								},
+								{
+									"linkId": "t3",
+									"text": "LBC Only",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Follow-up collection after positive HPV in self-collect"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "At time of colposcopy. T1 T2 T3."
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Repeat collection for previous unsatisfactory"
+											}
+										}
+									]
+								},
+								{
+									"linkId": "t3-1",
+									"text": "Follow-up collection after positive HPV in self-collect (Date of original sample)",
+									"type": "date"
+								},
+								{
+									"linkId": "t3-2",
+									"text": "Repeat collection for previous unsatisfactory (Date of original sample)",
+									"type": "date"
+								},
+								{
+									"linkId": "t4",
+									"text": "Other",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Outside guidelines"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Self Collect HPV.Send SWAB – DO NOT transfer into ThinPrep vial"
+											}
+										}
+									]
+								},
+								{
+									"linkId": "t5",
+									"text": "History",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Immune Deficient"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "HPV Vaccinated"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Total Hysterectomy"
+											}
+										}
+									]
+								},
+								{
+									"linkId": "t6",
+									"text": "Appearance of Cervix",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Normal"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Atypical/Dysplastic"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Suspicious for Malignancy"
+											}
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"linkId": "tab-3",
+					"text": "Doctors",
+					"type": "group",
+					"repeats": false,
+					"item": [
+						{
+							"linkId": "labnum",
+							"text": "Lab No",
+							"type": "string"
+						},
+						{
+							"linkId": "xas",
+							"text": "Cervical Screening Test Requested",
+							"type": "choice",
+							"repeats": true,
+							"answerOption": [
+								{
+									"valueCoding": {
+										"code": "HPV (+/- reflex LBC) ThinPrep [HPV1]"
+									}
+								},
+								{
+									"valueCoding": {
+										"code": "Co-test ThinPrep [HPV1 + LBC]"
+									}
+								},
+								{
+									"valueCoding": {
+										"code": "Liquid Based Cytology Only ThinPrep [LBC]"
+									}
+								},
+								{
+									"valueCoding": {
+										"code": "Self-collection HPV Swab [HPVSC]"
+									}
+								}
+							]
+						},
+						{
+							"linkId": "xxxx45",
+							"text": "Clinical Notes/Past Screening History",
+							"type": "group",
+							"item": [
+								{
+									"linkId": "notes",
+									"text": "Notes",
+									"type": "text"
+								},
+								{
+									"linkId": "xaster4",
+									"text": "Type",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "LNMP"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "IUCD"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Radiotherapy"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Post Natal"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Gestational"
+											}
+										}
+									]
+								},
+								{
+									"linkId": "age",
+									"text": "Age",
+									"type": "string"
+								},
+								{
+									"linkId": "surn",
+									"text": "Consultant/Senior Medical Officer Surname",
+									"type": "string"
+								},
+								{
+									"linkId": "inib",
+									"text": "Initials",
+									"type": "string"
+								},
+								{
+									"linkId": "praclastname",
+									"text": "Surname of Requesting Officer",
+									"type": "string"
+								},
+								{
+									"linkId": "pracgivenname",
+									"text": "First Name",
+									"type": "string"
+								},
+								{
+									"linkId": "pracprovidernumber",
+									"text": "Provider Number",
+									"type": "string"
+								},
+								{
+									"linkId": "aus",
+									"text": "AUSTLAB Code",
+									"type": "string"
+								},
+								{
+									"linkId": "datereq",
+									"text": "Date Requested",
+									"type": "date"
+								},
+								{
+									"linkId": "selfDetermine",
+									"text": "Self Determine",
+									"type": "boolean"
+								},
+								{
+									"linkId": "xas43542421",
+									"text": "Request",
+									"type": "choice",
+									"repeats": true,
+									"answerOption": [
+										{
+											"valueCoding": {
+												"code": "Urgent"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Tel"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Page"
+											}
+										},
+										{
+											"valueCoding": {
+												"code": "Fax"
+											}
+										}
+									]
+								},
+								{
+									"linkId": "cn544",
+									"text": "Contact",
+									"type": "string"
+								},
+								{
+									"linkId": "cn-1",
+									"text": "Copy Report To: Surname",
+									"type": "string"
+								},
+								{
+									"linkId": "cn-2",
+									"text": "Initials",
+									"type": "string"
+								},
+								{
+									"linkId": "cn-3",
+									"text": "Copy Report To Address",
+									"type": "string"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
