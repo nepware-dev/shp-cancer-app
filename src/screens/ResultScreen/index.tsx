@@ -4,6 +4,8 @@ import {useNavigation} from '@react-navigation/native';
 
 import Button from 'components/Button';
 
+import {NavigationProps} from 'navigation';
+
 import styles from './styles';
 
 const data = [
@@ -31,7 +33,7 @@ const data = [
 ];
 
 const ResultScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NavigationProps>();
 
   const handleTakeSurveyClick = useCallback(() => {
     navigation.navigate('Home');

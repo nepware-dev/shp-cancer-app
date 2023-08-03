@@ -5,11 +5,12 @@ import {useNavigation} from '@react-navigation/native';
 import Button from 'components/Button';
 
 import {authorize, appLogin} from 'services/auth';
+import {NavigationProps} from 'navigation';
 
 import styles from './styles';
 
 const Login = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NavigationProps>();
 
   const handleLogin = useCallback(async () => {
     try {

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
@@ -8,13 +8,13 @@ import AppNavigator from 'navigation';
 import {store, persistor} from 'store';
 
 function App(): JSX.Element {
-  useEffect(() => {
+  const hideSplashScreen = useCallback(() => {
     SplashScreen.hide();
   }, []);
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <NavigationContainer>
+        <NavigationContainer onReady={hideSplashScreen}>
           <AppNavigator />
         </NavigationContainer>
       </PersistGate>
