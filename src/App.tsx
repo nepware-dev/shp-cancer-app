@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
@@ -13,20 +12,13 @@ function App(): JSX.Element {
     SplashScreen.hide();
   }, []);
   return (
-    <>
-      <StatusBar
-        translucent
-        barStyle={'dark-content'}
-        backgroundColor={'white'}
-      />
-      <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <NavigationContainer>
-            <AppNavigator />
-          </NavigationContainer>
-        </PersistGate>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 }
 

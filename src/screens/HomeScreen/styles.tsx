@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-import COLORS from '../../utils/colors';
+import COLORS from 'utils/colors';
 
 export default StyleSheet.create({
   container: {
     height: '100%',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.white,
     display: 'flex',
     justifyContent: 'space-between',
     paddingHorizontal: 20,

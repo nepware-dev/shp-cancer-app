@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import COLORS from '../../utils/colors';
+import COLORS from 'utils/colors';
 
 export default StyleSheet.create({
   button: {
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     fontSize: 16,
     lineHeight: 28,
     fontFamily: 'Manrope-Regular',
-    color: '#ffffff',
+    color: COLORS.white,
     textAlign: 'center',
   },
 });

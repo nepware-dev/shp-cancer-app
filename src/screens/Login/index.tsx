@@ -1,6 +1,8 @@
 import React, {useCallback} from 'react';
-import {Button, Text, View} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+
+import Button from 'components/Button';
 
 import {authorize, appLogin} from 'services/auth';
 
@@ -22,8 +24,18 @@ const Login = () => {
   }, [navigation]);
   return (
     <View style={styles.container}>
-      <Text>Login Screen</Text>
-      <Button onPress={handleLogin} title="Login" />
+      <View style={styles.content}>
+        <Image style={styles.logo} source={require('assets/images/logo.png')} />
+        <Text style={styles.heading}>
+          Welcome to Cervical Cancer Screening Apps
+        </Text>
+        <Text style={styles.message}>Login to mange your application</Text>
+        <Image
+          style={styles.doctorImage}
+          source={require('assets/images/login.png')}
+        />
+      </View>
+      <Button onPress={handleLogin} title="Login as Practitioner" />
     </View>
   );
 };
