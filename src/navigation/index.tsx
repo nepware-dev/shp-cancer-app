@@ -1,5 +1,8 @@
 import React, {useCallback} from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 import {useSelector} from 'react-redux';
 
 import Home from 'screens/HomeScreen';
@@ -11,7 +14,15 @@ import {BackButton} from 'components/HeaderButton';
 import type {RootState} from 'store';
 import COLORS from 'utils/colors';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Home: undefined;
+  Login: undefined;
+  Result: undefined;
+};
+
+export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
   const {isAuthenticated} = useSelector((state: RootState) => state.auth);
