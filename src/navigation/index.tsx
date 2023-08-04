@@ -57,8 +57,28 @@ const AppNavigator = () => {
             component={Home}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="QuestionSets" component={QuestionSets} />
-          <Stack.Screen name="Questionnaire" component={Questionnaire} />
+          <Stack.Screen
+            name="QuestionSets"
+            component={QuestionSets}
+            options={{
+              headerTitle: 'Questions sets',
+              statusBarColor: COLORS.lightBlue,
+              headerStyle: {
+                backgroundColor: COLORS.lightBlue,
+              },
+            }}
+          />
+          <Stack.Screen
+            name="Questionnaire"
+            component={Questionnaire}
+            options={{
+              headerTitle: 'Questions',
+              statusBarColor: COLORS.lightBlue,
+              headerStyle: {
+                backgroundColor: COLORS.lightBlue,
+              },
+            }}
+          />
           <Stack.Screen
             name="Result"
             component={ResultScreen}

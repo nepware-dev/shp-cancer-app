@@ -2,6 +2,7 @@ import React, {useMemo, useCallback} from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import useFHIRResource from 'hooks/useFHIRResource';
 
@@ -9,10 +10,14 @@ import {setActiveQuestionnaire} from 'store/slices/questionnaire';
 
 import demoQuestionnaire from 'services/data/questionnaire.json';
 
+import COLORS from 'utils/colors';
+
+import {NavigationProps} from 'navigation';
+
 import styles from './styles';
 
 const QuestionSets = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NavigationProps>();
 
   const dispatch = useDispatch();
 
@@ -68,8 +73,11 @@ function QuestionSetItem(props: {
 
   return (
     <View style={styles.questionSetItem}>
-      <TouchableOpacity onPress={handlePress}>
+      <TouchableOpacity onPress={handlePress} style={styles.itemWrapper}>
         <Text style={styles.questionSetItemText}>{item.resource?.title}</Text>
+        <View style={styles.iconWrapper}>
+          <Icon color={COLORS.textDarker} name="arrow-forward" size={14} />
+        </View>
       </TouchableOpacity>
     </View>
   );
