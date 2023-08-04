@@ -83,6 +83,7 @@ android {
         manifestPlaceholders = [
           appAuthRedirectScheme: 'com.nepware.fhr'
         ]
+        vectorDrawables.useSupportLibrary = true
     }
     signingConfigs {
         debug {

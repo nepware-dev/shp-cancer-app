@@ -9,7 +9,7 @@ import {setNewAppTokens} from './auth';
 
 const {dispatch} = store;
 
-const RefreshTokenInterceptor = (req: Request, controller: AbortController) => {
+const RefreshTokenInterceptor = (req: Request, _: AbortController) => {
   let {
     auth: {refreshToken, tokenExpirationDate},
   } = store.getState();
@@ -22,7 +22,7 @@ const RefreshTokenInterceptor = (req: Request, controller: AbortController) => {
     const now = new Date();
     if (+tokenExpiresAt - +now < 0) {
       fhirService.refreshAppToken(refreshToken);
-      controller.abort();
+      // controller.abort();
     }
   }
 };
@@ -44,7 +44,7 @@ const request = new RequestBuilder(FHIR_BASE_URL)
     console.log,
   ])
   .setResponseInterceptors([console.log])
-  .setRetryConfig({backoffFactor: 0, maxRetries: 1})
+  .setRetryConfig({backoffFactor: 0.5, maxRetries: 2})
   .build();
 
 class FHIRService {

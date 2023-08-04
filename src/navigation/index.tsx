@@ -8,6 +8,8 @@ import {useSelector} from 'react-redux';
 import Home from 'screens/HomeScreen';
 import Login from 'screens/Login';
 import ResultScreen from 'screens/ResultScreen';
+import Questionnaire from 'screens/Questionnaire';
+import QuestionSets from 'screens/QuestionSets';
 
 import {BackButton} from 'components/HeaderButton';
 
@@ -18,6 +20,8 @@ type RootStackParamList = {
   Home: undefined;
   Login: undefined;
   Result: undefined;
+  QuestionSets: undefined;
+  Questionnaire: undefined;
 };
 
 export type NavigationProps = NativeStackNavigationProp<RootStackParamList>;
@@ -47,11 +51,25 @@ const AppNavigator = () => {
       }}
       initialRouteName={isAuthenticated ? 'Home' : 'Login'}>
       {isAuthenticated ? (
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{headerShown: false}}
-        />
+        <>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen name="QuestionSets" component={QuestionSets} />
+          <Stack.Screen name="Questionnaire" component={Questionnaire} />
+          <Stack.Screen
+            name="Result"
+            component={ResultScreen}
+            options={{
+              statusBarColor: COLORS.lightBlue,
+              headerStyle: {
+                backgroundColor: COLORS.lightBlue,
+              },
+            }}
+          />
+        </>
       ) : (
         <Stack.Screen
           options={{headerShown: false}}
@@ -59,16 +77,6 @@ const AppNavigator = () => {
           component={Login}
         />
       )}
-      <Stack.Screen
-        name="Result"
-        component={ResultScreen}
-        options={{
-          statusBarColor: COLORS.lightBlue,
-          headerStyle: {
-            backgroundColor: COLORS.lightBlue,
-          },
-        }}
-      />
     </Stack.Navigator>
   );
 };
