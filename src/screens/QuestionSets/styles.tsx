@@ -22,15 +22,23 @@ export default StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 8,
     borderRadius: 4,
-    borderColor: COLORS.inputBorder,
+    borderColor: 'rgba(1, 112, 185, 0.16)',
     borderWidth: 1,
     backgroundColor: COLORS.white,
-    // elevation: 1,
-    // shadowColor: '#3D3A40',
-    // shadowOpacity: 0.16,
+  },
+  itemWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   questionSetItemText: {
     fontFamily: 'Manrope-Regular',
     color: COLORS.textDarker,
+    fontSize: 13,
+    flex: 1,
+  },
+  iconWrapper: {
+    marginLeft: 10,
   },
 });
