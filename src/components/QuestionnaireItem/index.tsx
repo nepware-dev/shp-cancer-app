@@ -1,5 +1,9 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import {useSelector} from 'react-redux';
+import {RootState} from 'store';
+
+import {checkConditionsOfSingleItem} from 'utils/questionnaire';
 
 import AttachmentInput from './Inputs/AttachmentInput';
 import BasicInput from './Inputs/BasicInput';
@@ -27,6 +31,14 @@ interface QuestionnaireItemProps {
 const QuestionnaireItemComponent = (props: QuestionnaireItemProps) => {
   const {item} = props;
 
+  const questionnaireItemMap = useSelector(
+    (state: RootState) => state.questionnaire.itemMap,
+  );
+
+  if (!checkConditionsOfSingleItem(item, questionnaireItemMap)) {
+    return null;
+  }
+
   if ((item.type === 'text' || item.type === 'display') && item.text) {
     return <Text style={styles.text}>{item.text}</Text>;
   }
@@ -44,7 +56,6 @@ const QuestionnaireItemComponent = (props: QuestionnaireItemProps) => {
       break;
     case 'date':
       questionItem = <DateInput item={item} />;
-      // questionItem = <AttachmentInput item={item} />;
       break;
     case 'time':
       questionItem = <TimeInput item={item} />;
@@ -65,7 +76,7 @@ const QuestionnaireItemComponent = (props: QuestionnaireItemProps) => {
       break;
     }
     default:
-      questionItem = <Text style={styles.text}>{JSON.stringify(item)}</Text>;
+      questionItem = <Text style={styles.text}>{item.text}</Text>;
       break;
   }
 

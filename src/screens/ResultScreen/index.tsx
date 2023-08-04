@@ -1,8 +1,11 @@
 import React, {useCallback} from 'react';
 import {View, Image, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
 
 import Button from 'components/Button';
+
+import {removeActiveQuestionnaire} from 'store/slices/questionnaire';
 
 import {NavigationProps} from 'navigation';
 
@@ -35,9 +38,13 @@ const data = [
 const ResultScreen = () => {
   const navigation = useNavigation<NavigationProps>();
 
+  const dispatch = useDispatch();
+
   const handleTakeSurveyClick = useCallback(() => {
+    dispatch(removeActiveQuestionnaire());
     navigation.navigate('Home');
-  }, [navigation]);
+  }, [navigation, dispatch]);
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
