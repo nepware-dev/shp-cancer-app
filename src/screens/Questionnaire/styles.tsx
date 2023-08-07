@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   contentContainer: {
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingBottom: 200,
   },
   title: {
     fontSize: 22,

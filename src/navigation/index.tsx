@@ -16,10 +16,12 @@ import {BackButton} from 'components/HeaderButton';
 import type {RootState} from 'store';
 import COLORS from 'utils/colors';
 
-type RootStackParamList = {
+export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
-  Result: undefined;
+  Result: {
+    resultType: 'VIA Positive' | 'VIA Negative';
+  };
   QuestionSets: undefined;
   Questionnaire: undefined;
 };
