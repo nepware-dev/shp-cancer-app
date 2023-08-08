@@ -1,11 +1,12 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, Text, Alert} from 'react-native';
 import {KeyboardAwareFlatList} from 'react-native-keyboard-aware-scroll-view';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
-import QuestionnaireItem from 'components/QuestionnaireItem';
 import {SaveButton} from 'components/HeaderButton';
+import {AnalyzingLoader} from 'components/Loader';
+import QuestionnaireItem from 'components/QuestionnaireItem';
 
 import {createResponseJSON} from 'utils/questionnaire';
 
@@ -22,22 +23,28 @@ const Questionnaire = () => {
 
   const navigation = useNavigation<NavigationProps>();
 
+  const [loading, setLoading] = useState<boolean>(false);
+
   const handleSubmitQuestionnaire = useCallback(() => {
+    setLoading(true);
     const questionnaireResponse = createResponseJSON(
       itemMap,
       activeQuestionnaire,
     );
-    Alert.alert(
-      'QuestionnaireResponse created!',
-      JSON.stringify(questionnaireResponse),
-      [
-        {
-          text: 'OK',
-          onPress: () => navigation.navigate('Result'),
-        },
-      ],
-    );
     // TODO: Submit QuestionnaireResponse to API
+    setTimeout(() => {
+      setLoading(false);
+      Alert.alert(
+        'QuestionnaireResponse created!',
+        JSON.stringify(questionnaireResponse),
+        [
+          {
+            text: 'OK',
+            onPress: () => navigation.navigate('Result'),
+          },
+        ],
+      );
+    }, 2000);
   }, [itemMap, activeQuestionnaire, navigation]);
 
   const renderSaveButton = useCallback(
@@ -55,9 +62,10 @@ const Questionnaire = () => {
 
   return (
     <View style={styles.container}>
+      <AnalyzingLoader loading={loading} />
       <KeyboardAwareFlatList
         data={activeQuestionnaire?.item || []}
-        renderItem={QuestionnaireItem}
+        renderItem={renderProps => <QuestionnaireItem {...renderProps} />}
         keyExtractor={item => item.linkId}
         removeClippedSubviews={false}
         ListHeaderComponent={

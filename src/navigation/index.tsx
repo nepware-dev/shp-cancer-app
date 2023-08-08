@@ -61,7 +61,7 @@ const AppNavigator = () => {
             name="QuestionSets"
             component={QuestionSets}
             options={{
-              headerTitle: 'Questions sets',
+              headerTitle: 'Question sets',
               statusBarColor: COLORS.lightBlue,
               headerStyle: {
                 backgroundColor: COLORS.lightBlue,

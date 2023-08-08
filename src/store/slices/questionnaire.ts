@@ -1,7 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import type {QuestionnaireItem} from 'components/QuestionnaireItem';
 
-import {generateQuestionnaireItemMap} from 'utils/questionnaire';
+import {
+  generateQuestionnaireItemMap,
+  checkQuestionnaireStatus,
+} from 'utils/questionnaire';
 
 interface Questionnaire {
   uri?: string;
@@ -69,7 +72,11 @@ const questionnaireSlice = createSlice({
           },
         };
       }
-      state.itemMap = newItemMap;
+      state.itemMap = checkQuestionnaireStatus(
+        linkId,
+        newItemMap[linkId].item,
+        newItemMap,
+      );
       state.activeQuestionnaire!.started = true;
     },
     removeActiveQuestionnaire: () => {
