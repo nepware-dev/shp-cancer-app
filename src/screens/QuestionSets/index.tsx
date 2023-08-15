@@ -8,9 +8,6 @@ import useFHIRResource from 'hooks/useFHIRResource';
 
 import {setActiveQuestionnaire} from 'store/slices/questionnaire';
 
-// import demoQuestionnaire from 'services/data/questionnaire.json';
-import cervicalCancerScreeningQuestionnaire from 'services/data/CervicalCancerScreeningR4.json';
-
 import COLORS from 'utils/colors';
 
 import {NavigationProps} from 'navigation';
@@ -47,10 +44,7 @@ const QuestionSets = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={[
-          // ...questionSets, // FIXME: only use static cervical cancer form for now
-          {resource: cervicalCancerScreeningQuestionnaire},
-        ]}
+        data={questionSets}
         renderItem={renderQuestionSetItem}
         keyExtractor={item => item.resource.title}
         contentContainerStyle={styles.contentContainer}
