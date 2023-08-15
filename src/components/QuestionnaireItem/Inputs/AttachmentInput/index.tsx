@@ -36,7 +36,7 @@ const AttachmentItem = ({
     <View style={styles.attachmentItem}>
       <Image source={{uri: item.url}} style={styles.attachmentImage} />
       <TouchableOpacity style={styles.removeIcon} onPress={onRemove}>
-        <AntDesignIcon name="closecircle" size={16} color={COLORS.primary} />
+        <AntDesignIcon name="closecircle" size={20} color={COLORS.white} />
       </TouchableOpacity>
     </View>
   );
@@ -104,11 +104,13 @@ const AttachmentInput = (props: AttachmentInputProps) => {
         horizontal
         renderItem={renderAttachmentItem}
         ListFooterComponent={
-          <TouchableOpacity
-            style={styles.addIconContainer}
-            onPress={handleAddAttachmentPress}>
-            <Icon name="plus" size={24} color={COLORS.primary} />
-          </TouchableOpacity>
+          attachments.length === 0 ? (
+            <TouchableOpacity
+              style={styles.addIconContainer}
+              onPress={handleAddAttachmentPress}>
+              <Icon name="plus" size={24} color={COLORS.primary} />
+            </TouchableOpacity>
+          ) : null
         }
       />
     </View>

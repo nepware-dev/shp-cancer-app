@@ -28,9 +28,9 @@ const Login = () => {
       <View style={styles.content}>
         <Image style={styles.logo} source={require('assets/images/logo.png')} />
         <Text style={styles.heading}>
-          Welcome to Cervical Cancer Screening Apps
+          Welcome to Cervical Cancer Screening App
         </Text>
-        <Text style={styles.message}>Login to mange your application</Text>
+        <Text style={styles.message}>Login to manage your application</Text>
         <Image
           style={styles.doctorImage}
           source={require('assets/images/login.png')}

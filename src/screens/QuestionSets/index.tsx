@@ -8,7 +8,8 @@ import useFHIRResource from 'hooks/useFHIRResource';
 
 import {setActiveQuestionnaire} from 'store/slices/questionnaire';
 
-import demoQuestionnaire from 'services/data/questionnaire.json';
+// import demoQuestionnaire from 'services/data/questionnaire.json';
+import cervicalCancerScreeningQuestionnaire from 'services/data/CervicalCancerScreeningR4.json';
 
 import COLORS from 'utils/colors';
 
@@ -26,6 +27,7 @@ const QuestionSets = () => {
   const questionSets = useMemo(() => {
     return questionnaire?.entry || [];
   }, [questionnaire]);
+  console.log(questionSets);
 
   const handleQuestionSetPress = useCallback(
     (selectedQuestionnaire: any) => {
@@ -45,9 +47,12 @@ const QuestionSets = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={[...questionSets, {resource: demoQuestionnaire}]}
+        data={[
+          // ...questionSets, // FIXME: only use static cervical cancer form for now
+          {resource: cervicalCancerScreeningQuestionnaire},
+        ]}
         renderItem={renderQuestionSetItem}
-        keyExtractor={item => item.resource.id}
+        keyExtractor={item => item.resource.title}
         contentContainerStyle={styles.contentContainer}
         ListEmptyComponent={
           loading ? (

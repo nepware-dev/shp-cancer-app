@@ -26,10 +26,13 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 2,
     right: 2,
+    backgroundColor: COLORS.primary,
+    borderRadius: 25,
   },
   attachmentImage: {
-    width: 80,
-    height: 64,
+    width: 100,
+    height: 80,
+    borderRadius: 4,
   },
   addIconContainer: {
     display: 'flex',

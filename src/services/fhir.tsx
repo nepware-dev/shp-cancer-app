@@ -60,6 +60,29 @@ class FHIRService {
     return data;
   }
 
+  async post(
+    url: string,
+    body: Record<string, any>,
+    options: Record<string, any> = {},
+  ) {
+    const {error, data, response} = await request(`/v/r4${url}`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(body),
+      ...options,
+    });
+    if (error) {
+      if (response.status === 500) {
+        throw new Error('500 Internal Server Error');
+      }
+      console.log(data);
+      throw data || 'Network Request Error!';
+    }
+    return data;
+  }
+
   async getUserInfo() {
     try {
       const user = await this.get('/auth/userinfo/');
@@ -93,6 +116,10 @@ class FHIRService {
 
   getResource = async (resourceType: string) => {
     return await this.get(`/fhir/${resourceType}/`);
+  };
+
+  createQuestionnaireResponse = async (params: Record<string, any>) => {
+    return await this.post('/fhir/QuestionnaireResponse/', params);
   };
 }
 
