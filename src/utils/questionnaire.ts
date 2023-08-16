@@ -342,7 +342,7 @@ export const createResponseJSON = (
     authored: new Date().toISOString(),
     item: createItems(questionnaire?.item || []),
     resourceType: 'QuestionnaireResponse',
-    questionnaire: `${questionnaire.url}`,
+    questionnaire: `${questionnaire.id}`,
     status: 'completed',
   };
 
